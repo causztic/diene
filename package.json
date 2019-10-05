@@ -1,6 +1,6 @@
 {
   "name": "diene",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "web scraping - successor of night-stalker",
   "main": "dist/diene.js",
   "author": "yaojie <limyaojie93@gmail.com>",
