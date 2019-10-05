@@ -48,7 +48,7 @@ export default class Diene {
         const edges = this.getPostPage(text);
 
         edges.forEach((edge) => {
-          const { id, shortcode, display_rl: media, __typename: type } = edge.node;
+          const { id, shortcode, display_url: media, __typename: type } = edge.node;
           post.gallery.push({
             id,
             media,
