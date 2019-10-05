@@ -2,9 +2,12 @@
   "name": "diene",
   "version": "0.0.4",
   "description": "web scraping - successor of night-stalker",
-  "main": "./dist/diene.js",
+  "main": "dist/diene.js",
   "author": "yaojie <limyaojie93@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": ">=7.8.0",
+  },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "node-fetch": "^2.6.0"
@@ -14,6 +17,7 @@
     "build": "babel src --out-dir dist",
     "prepare": "npm run build"
   },
+  "files": ["dist/diene.js"],
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
