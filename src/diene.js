@@ -48,7 +48,8 @@ export default class Diene {
       if (post.type === 'GraphSidecar') {
         post.gallery = [];
 
-        const response = await fetch(`https://www.instagram.com/p/${post.shortcode}`);
+        const response = await fetch(`https://www.instagram.com/p/${post.shortcode}`,
+          { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36' } });
         const text = await response.text();
         const edges = this.getPostPage(text);
 
@@ -70,7 +71,8 @@ export default class Diene {
 
   async getPosts(count = 3) {
     let posts = [];
-    const response = await fetch(`https://www.instagram.com/${this.name}`);
+    const response = await fetch(`https://www.instagram.com/${this.name}`,
+      { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36' } });
     const text = await response.text();
     const edges = this.getProfilePage(text);
     edges.slice(0, count).forEach((edge) => {
