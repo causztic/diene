@@ -1,0 +1,26 @@
+{
+  "name": "diene",
+  "version": "0.0.1",
+  "description": "web scraping - successor of night-stalker",
+  "main": "index.js",
+  "author": "yaojie <limyaojie93@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "node-fetch": "^2.6.0"
+  },
+  "scripts": {
+    "test": "jest src/tests --runInBand",
+    "build": "babel src --out-dir dist",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.17.0",
+    "jest": "^24.9.0"
+  }
+}
