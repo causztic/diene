@@ -4,8 +4,9 @@ const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
 export default class Diene {
-  constructor(name) {
+  constructor(name, verbose = false) {
     this.name = name;
+    this.verbose = verbose;
   }
 
   static getPostPage(text) {
@@ -23,7 +24,7 @@ export default class Diene {
     return edges;
   }
 
-  static getProfilePage(text) {
+  getProfilePage(text) {
     const $ = cheerio.load(text);
     const document = $('*')
       .contents()
@@ -31,6 +32,10 @@ export default class Diene {
       .get()
       .map((tag) => tag.children[0])
       .filter((child) => child && child.data && child.data.startsWith('window._sharedData'))[0].data;
+
+    if (this.verbose) {
+      console.log(document);
+    }
 
     const result = JSON.parse(document.substring(document.indexOf('{'), document.length - 1));
     const [profile] = result.entry_data.ProfilePage;
@@ -67,7 +72,7 @@ export default class Diene {
     let posts = [];
     const response = await fetch(`https://www.instagram.com/${this.name}`);
     const text = await response.text();
-    const edges = Diene.getProfilePage(text);
+    const edges = this.getProfilePage(text);
     edges.slice(0, count).forEach((edge) => {
       const { id, shortcode, display_url: media, __typename: type } = edge.node;
       posts.push({
