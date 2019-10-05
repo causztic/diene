@@ -1,8 +1,8 @@
 {
   "name": "diene",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "web scraping - successor of night-stalker",
-  "main": "index.js",
+  "main": "./dist/diene.js",
   "author": "yaojie <limyaojie93@gmail.com>",
   "license": "MIT",
   "dependencies": {
