@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
-// const INSTAGRAM_AGENT = 'Instagram 10.26.0 (iPhone7,2; iOS 10_1_1; en_US; en-US; scale=2.00; gamut=normal; 750x1334) AppleWebKit/420+';
+const INSTAGRAM_AGENT = 'Instagram 10.26.0 (iPhone7,2; iOS 10_1_1; en_US; en-US; scale=2.00; gamut=normal; 750x1334) AppleWebKit/420+';
+const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36';
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
@@ -49,7 +50,7 @@ export default class Diene {
         post.gallery = [];
 
         const response = await fetch(`https://www.instagram.com/p/${post.shortcode}`,
-          { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36' } });
+          { headers: { 'User-Agent': USER_AGENT } });
         const text = await response.text();
         const edges = this.getPostPage(text);
 
@@ -72,9 +73,10 @@ export default class Diene {
   async getPosts(count = 3) {
     let posts = [];
     const response = await fetch(`https://www.instagram.com/${this.name}`,
-      { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36' } });
+      { headers: { 'User-Agent': USER_AGENT } });
     const text = await response.text();
     const edges = this.getProfilePage(text);
+
     edges.slice(0, count).forEach((edge) => {
       const { id, shortcode, display_url: media, __typename: type } = edge.node;
       posts.push({

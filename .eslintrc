@@ -6,6 +6,7 @@
   "extends": "airbnb-base",
   "plugins": ["jest", "import"],
   "rules": {
+    "no-console": "off",
     "implicit-arrow-linebreak": "off",
     "object-curly-newline": ["error", {
       "ObjectExpression": { "multiline": true, "minProperties": 3 },

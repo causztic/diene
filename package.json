@@ -13,7 +13,7 @@
     "node-fetch": "^2.6.0"
   },
   "scripts": {
-    "test": "jest src/tests --runInBand",
+    "test": "jest tests --runInBand",
     "build": "babel src --out-dir dist",
     "prepare": "npm run build"
   },
